@@ -1,0 +1,35 @@
+body{
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+.screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #222;
+    width: 100vw;
+    height: 100vh;
+    .container {
+        width: 90vw;
+        height: 90vh;
+        position: relative;
+        //background-color: #222;
+        border: white solid 5px;
+        .cube {
+            width: 120px;
+            height: 80px;
+            border-radius: 50%;//el border radius no afecta en el width
+            background-color: red;
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            //border: black solid 5px;
+            //transform:translateX(50%);
+            //transform:translateY(100px);
+
+        }
+    }
+}
