@@ -84,7 +84,7 @@ export const DVD = () => {
         <div className="screen">
             <div className="container" id="container">
                 <div style={{ background: `${color}`, transform: `translate(${valueX}px,${valueY}px)` }} className="cube">
-                    DVD
+                    <h2>DVD</h2>
                 </div>
             </div>
         </div>
