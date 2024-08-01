@@ -8,8 +8,9 @@ let aux2 = true;
 const doc = document.getElementById("container")//necesario
 
 
-export const DVD = () => {
-    
+
+export const DVD = (props) => {
+
 
     const [valueX, setValueX] = useState(0)
     const [valueY, setValueY] = useState(0)
@@ -27,61 +28,64 @@ export const DVD = () => {
 
         return;
     }
-    useEffect( () => {
+    useEffect(() => {
         const height = document.getElementById("container").offsetHeight - 90;
         const width = document.getElementById("container").offsetWidth - 130;//porque va aqui
-        const interval = setInterval(() => {
+        if (props.click) {//solo no se que pasa con el return
+            const interval = setInterval(() => {
 
-            if (valueX < width && !direccionX) {
-                setValueX(prev => prev + 1);
-                aux = direccionX
-            } else {
-
-
-
-                direccionX = true
-
-            }
-            aux !== direccionX && cahngeColor()
-
-            if (0 < valueX && direccionX) {
-                setValueX(prev => prev - 1);
-                aux = direccionX
-            } else {
-
-                direccionX = false
-
-            }
-            aux !== direccionX && cahngeColor()
-            ///////////////////////////////////////////////////////////
-
-            if (valueY < height && !direccionY) {
-                setValueY(prev => prev + 1);
-                aux2 = direccionY
-            } else {
-                //cahngeColor()
-                direccionY = true
-            }
-            aux2 !== direccionY && cahngeColor()
-
-            if (0 < valueY && direccionY) {
-                setValueY(prev => prev - 1);
-                aux2 = direccionY
-            } else {
-                //cahngeColor()
-                direccionY = false
-            }
-            aux2 !== direccionY && cahngeColor()
+                if (valueX < width && !direccionX) {
+                    setValueX(prev => prev + 1);
+                    aux = direccionX
+                } else {
 
 
-        }, 5);//velocidad
 
-        console.log(valueX + " " + valueY)
+                    direccionX = true
 
-        return () => { clearInterval(interval) }
-    }, [valueX, valueY])
+                }
+                aux !== direccionX && cahngeColor()
+
+                if (0 < valueX && direccionX) {
+                    setValueX(prev => prev - 1);
+                    aux = direccionX
+                } else {
+
+                    direccionX = false
+
+                }
+                aux !== direccionX && cahngeColor()
+                ///////////////////////////////////////////////////////////
+
+                if (valueY < height && !direccionY) {
+                    setValueY(prev => prev + 1);
+                    aux2 = direccionY
+                } else {
+                    //cahngeColor()
+                    direccionY = true
+                }
+                aux2 !== direccionY && cahngeColor()
+
+                if (0 < valueY && direccionY) {
+                    setValueY(prev => prev - 1);
+                    aux2 = direccionY
+                } else {
+                    //cahngeColor()
+                    direccionY = false
+                }
+                aux2 !== direccionY && cahngeColor()
+
+
+            }, 5);//velocidad
+
+            //console.log(valueX + " " + valueY)//imprimir coordenadas
+
+            return () => { clearInterval(interval) }
+        }
+    }, [valueX, valueY, props.click])
     return (
-        <div className="screen">
+        <div className="screen" >
+            {!props.click && <h6 className='click'>PRESS CLICK</h6>}
             <div className="container" id="container">
                 <div style={{ background: `${color}`, transform: `translate(${valueX}px,${valueY}px)` }} className="cube">
                     <h2>DVD</h2>
